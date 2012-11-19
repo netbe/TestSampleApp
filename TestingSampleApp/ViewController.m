@@ -17,15 +17,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
+
+    // NOTE: why does the request not caught if performed during viewDidLoad
+    //  [self sendRequest];
+}
+
+-(void)sendRequest
+{
     NSURLRequest *request =  [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:@"http://klaxpont.dev/api/dailymotion/token"]];
+    
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection) {
         [connection start];
     }
-//    _token = @"MnETBAxYXEFbTR0aFBYEVggSTRFcAQc";
 }
 
 - (void)didReceiveMemoryWarning

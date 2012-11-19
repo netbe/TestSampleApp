@@ -19,14 +19,16 @@ afterEach(^{
 
 it(@"should send a request to server and store token", ^{
     
+    stubRequest(@"GET", @"http://klaxpont.dev/api/dailymotion/token").andReturn(200).
+    withHeaders(@{@"Content-Type": @"application/json"}).
+    withBody(@"{\"response\":{\"access_token\":\"toto\"}}");;
     ViewController *vc = [ViewController new];
-    stubRequest(@"GET", @"http://klaxpont.dev/api/dailymotion/token");
 
-    
-    [vc viewDidLoad];
-    
-    [[(vc.token) shouldEventually] beNonNil] ;//]equal:@"MnETBAxYXEFbTR0aFBYEVggSTRFcAQc"];
-    [[(vc.token) shouldEventually] equal:@"MnETBAxYXEFbTR0aFBYEVggSTRFcAQc"];
+
+    // NOTE: why does the request not caught if performed during viewDidLoad
+    [vc performSelector:@selector(sendRequest)];
+    [[theValue(vc.token) shouldEventually] beNonNil];
+    [[(vc.token) shouldEventually] equal:@"toto"];
 });
 
 
