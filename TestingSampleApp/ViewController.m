@@ -19,7 +19,7 @@
     [super viewDidLoad];
 
     // NOTE: why does the request not caught if performed during viewDidLoad
-    //  [self sendRequest];
+    [self sendRequest];
 }
 
 -(void)sendRequest

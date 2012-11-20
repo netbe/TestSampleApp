@@ -26,7 +26,7 @@ it(@"should send a request to server and store token", ^{
 
 
     // NOTE: why does the request not caught if performed during viewDidLoad
-    [vc performSelector:@selector(sendRequest)];
+
     [[theValue(vc.token) shouldEventually] beNonNil];
     [[(vc.token) shouldEventually] equal:@"toto"];
 });
