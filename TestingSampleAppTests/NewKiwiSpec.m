@@ -10,4 +10,32 @@
 
 SPEC_BEGIN(NewKiwiSpec)
 
+beforeAll(^{
+    NSLog(@"FIRST BEFORE ALL");
+});
+beforeEach(^{
+    NSLog(@"FIRST BEFORE EACH");
+});
+
+describe(@"inside the first describe", ^{
+    NSLog(@"FIRST DESCRIBE NO BLOCKS");
+    beforeAll(^{
+        NSLog(@"BEFORE ALL - inside the first describe");
+    });
+    beforeEach(^{
+        NSLog(@"BEFORE EACH - inside the first describe");
+    });
+    it(@"should test something", ^{
+        NSLog(@"should test something");
+    });
+    
+    it(@"should test something else", ^{
+        NSLog(@"should test something else");
+    });
+    
+    it(@"should failed", ^{
+        [[theValue(YES) should] beFalse];
+    });
+
+});
 SPEC_END
