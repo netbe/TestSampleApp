@@ -1,6 +1,6 @@
-platform :ios
+platform :ios, '5.0'
 
 target :TestingSampleAppTests, :exclusive => true do
-  pod 'Kiwi'
-  pod 'Nocilla'
+  pod 'Kiwi', :head
+  pod 'Nocilla', :head
 end

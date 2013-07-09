@@ -23,7 +23,7 @@ it(@"should send a request to server and store token", ^{
     withHeaders(@{@"Content-Type": @"application/json"}).
     withBody(@"{\"response\":{\"access_token\":\"toto\"}}");;
     ViewController *vc = [ViewController new];
-
+    [vc viewDidLoad];
 
     // NOTE: why does the request not caught if performed during viewDidLoad
 
